@@ -17,21 +17,19 @@ export interface Props {
 }
 export function Nav(p: Props) {
   return (React.createElement('nav', { className: p.className },
-    React.createElement('ul', null,
-      React.createElement('li', null,
-        React.createElement('button', { className: 'toggle-menu', onClick: p.toggle }),
-        React.createElement('p', { className: 'sidebar-off-menu' },
-          React.createElement('button', { className: 'toggle', onClick: p.toggle }),
-          React.createElement('i', { className: 'expand', onClick: p.expand }),
-          React.createElement('i', { className: 'collapse', onClick: p.collapse }))),
-      renderItems(p.path, p.pins, p.pin, p.resource, p.iconClass, true, true),
-      renderItems(p.path, p.items, p.pin, p.resource, p.iconClass, true))));
+  React.createElement('ul', null,
+    React.createElement('li', null,
+      React.createElement('p', { className: 'sidebar-off-menu' },
+        React.createElement('button', { className: 'toggle', onClick: p.toggle }),
+        React.createElement('i', { className: 'expand', onClick: p.expand }),
+        React.createElement('i', { className: 'collapse', onClick: p.collapse }))),
+    renderItems(p.path, p.pins, p.pin, p.resource, p.iconClass, true, true),
+    renderItems(p.path, p.items, p.pin, p.resource, p.iconClass, true))));
   /*
   return (
     <nav className={p.className}>
       <ul>
         <li>
-          <button className='toggle-menu' onClick={p.toggle} />
           <p className='sidebar-off-menu'>
             <button className='toggle' onClick={p.toggle} />
             <i className='expand' onClick={p.expand} />
@@ -42,7 +40,8 @@ export function Nav(p: Props) {
         {renderItems(p.path, p.items, p.pin, p.resource, p.iconClass, true)}
       </ul>
     </nav>
-  );*/
+  );
+  */
 }
 export interface StringMap {
   [key: string]: string;
@@ -124,21 +123,6 @@ export function findParent(ele: HTMLElement, node: string): HTMLElement|null {
 export function getIconClass(icon?: string): string {
   return !icon || icon === '' ? 'settings' : icon;
 }
-export const onMouseHover = (e: { preventDefault: () => void; }, sysBody: HTMLElement) => {
-  e.preventDefault();
-  if (sysBody.classList.contains('top-menu') && window.innerWidth > 768) {
-    const navbar = Array.from(document.querySelectorAll('.sidebar>nav>ul>li>ul.expanded'));
-    const icons = Array.from(document.querySelectorAll('.sidebar>nav>ul>li>a>i.up'));
-    if (navbar.length > 0) {
-      for (let i = 0; i < navbar.length; i++) {
-        navbar[i].classList.toggle('expanded');
-        if (icons[i]) {
-          icons[i].className = 'entity-icon down';
-        }
-      }
-    }
-  }
-};
 export const collapseAll = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
   e.preventDefault();
   const parent = findParent(e.currentTarget, 'NAV');
@@ -147,13 +131,13 @@ export const collapseAll = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     parent.classList.remove('expanded-all');
     const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.expanded'));
     if (navbar.length > 0) {
-      const icons = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>a>i.up'));
+      const icons = Array.from(parent.querySelectorAll('i.down'));
       let i = 0;
       for (i = 0; i < navbar.length; i++) {
         navbar[i].className = 'list-child';
-        if (icons[i]) {
-          icons[i].className = 'entity-icon down';
-        }
+      }
+      for (i = 0; i < icons.length; i++) {
+        icons[i].className = 'entity-icon up';
       }
     }
   }
@@ -166,13 +150,13 @@ export const expandAll = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     parent.classList.add('expanded-all');
     const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.list-child'));
     if (navbar.length > 0) {
-      const icons = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>a>i.down'));
+      const icons = Array.from(parent.querySelectorAll('i.up'));
       let i = 0;
       for (i = 0; i < navbar.length; i++) {
         navbar[i].className = 'list-child expanded';
-        if (icons[i]) {
-          icons[i].className = 'entity-icon up';
-        }
+      }
+      for (i = 0; i < icons.length; i++) {
+        icons[i].className = 'entity-icon down';
       }
     }
   }
@@ -214,20 +198,22 @@ export const toggleMenuItem = (event: React.MouseEvent<HTMLElement, MouseEvent>)
   event.preventDefault();
   let target: HTMLElement|null = event.currentTarget;
   const currentTarget = event.currentTarget;
-  const elI = currentTarget.querySelectorAll('.menu-item > i')[1];
-  if (elI) {
-    if (elI.classList.contains('down')) {
-      elI.classList.remove('down');
-      elI.classList.add('up');
+  const nul = currentTarget.nextElementSibling;
+  if (nul) {
+    const elI = currentTarget.querySelectorAll('.menu-item > i.entity-icon');
+    if (nul.classList.contains('expanded')) {
+      nul.classList.remove('expanded');
+      if (elI && elI.length > 0) {
+        elI[0].classList.add('up');
+        elI[0].classList.remove('down');
+      }
     } else {
-      if (elI.classList.contains('up')) {
-        elI.classList.remove('up');
-        elI.classList.add('down');
+      nul.classList.add('expanded');
+      if (elI && elI.length > 0) {
+        elI[0].classList.remove('up');
+        elI[0].classList.add('down');
       }
     }
-  }
-  if (currentTarget.nextElementSibling) {
-    currentTarget.nextElementSibling.classList.toggle('expanded');
   }
   if (target.nodeName === 'A') {
     target = target.parentElement;
@@ -251,3 +237,15 @@ export const toggleMenuItem = (event: React.MouseEvent<HTMLElement, MouseEvent>)
     }, 0);
   }
 };
+export function sub(n1?: number, n2?: number): number {
+  if (!n1 && !n2) {
+    return 0;
+  } else if (n1 && n2) {
+    return n1 - n2;
+  } else if (n1) {
+    return n1;
+  } else if (n2) {
+    return -n2;
+  }
+  return 0;
+}
