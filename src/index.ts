@@ -79,7 +79,7 @@ export const renderItem = (activePath: string, key: number, module: Privilege, p
           <span>{name}</span>
           <i className='entity-icon down' />
         </div>
-        <ul className='list-child expanded'>{renderItems(activePath, features, pin, resource, iconClass, false)}</ul>
+        <ul className='sub-list expanded'>{renderItems(activePath, features, pin, resource, iconClass, false)}</ul>
       </li>
     );*/
     return (React.createElement('li', { key, className: 'open ' + activeWithPath(activePath, link, true, features) },
@@ -88,7 +88,7 @@ export const renderItem = (activePath: string, key: number, module: Privilege, p
       React.createElement('i', { className: iconClass }, className),
       React.createElement('span', null, name),
       React.createElement('i', { className: 'entity-icon down' })),
-    React.createElement('ul', { className: 'list-child expanded' }, renderItems(activePath, features, pin, resource, iconClass, false))));
+    React.createElement('ul', { className: 'sub-list expanded' }, renderItems(activePath, features, pin, resource, iconClass, false))));
   } else {
     const x: any = { to: module.path, className: 'menu-item' };
     return (React.createElement('li', { key, className: activeWithPath(activePath, module.path, false) },
@@ -134,7 +134,7 @@ export const collapseAll = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
       const icons = Array.from(parent.querySelectorAll('i.down'));
       let i = 0;
       for (i = 0; i < navbar.length; i++) {
-        navbar[i].className = 'list-child';
+        navbar[i].className = 'sub-list';
       }
       for (i = 0; i < icons.length; i++) {
         icons[i].className = 'entity-icon up';
@@ -148,12 +148,12 @@ export const expandAll = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
   if (parent) {
     parent.classList.remove('collapsed-all');
     parent.classList.add('expanded-all');
-    const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.list-child'));
+    const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.sub-list'));
     if (navbar.length > 0) {
       const icons = Array.from(parent.querySelectorAll('i.up'));
       let i = 0;
       for (i = 0; i < navbar.length; i++) {
-        navbar[i].className = 'list-child expanded';
+        navbar[i].className = 'sub-list expanded';
       }
       for (i = 0; i < icons.length; i++) {
         icons[i].className = 'entity-icon down';
@@ -162,7 +162,7 @@ export const expandAll = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
   }
 };
 export function isCollapsedAll(parent: HTMLElement): boolean {
-  const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.list-child'));
+  const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.sub-list'));
   if (navbar.length > 0) {
     let i = 0;
     for (i = 0; i < navbar.length; i++) {
@@ -175,7 +175,7 @@ export function isCollapsedAll(parent: HTMLElement): boolean {
   return false;
 }
 export function isExpandedAll(parent: HTMLElement): boolean {
-  const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.list-child'));
+  const navbar = Array.from(parent.querySelectorAll('.sidebar>nav>ul>li>ul.sub-list'));
   if (navbar.length > 0) {
     let i = 0;
     for (i = 0; i < navbar.length; i++) {
