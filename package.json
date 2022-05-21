@@ -1,6 +1,6 @@
 {
   "name": "reactx-nav",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Navigation",
   "main": "./lib/index.js",
   "types": "./src/index.ts",

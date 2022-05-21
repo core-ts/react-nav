@@ -353,7 +353,7 @@ nav.collapsed-all .sidebar-off-menu>.collapse {
   display: inline;
   font-size: 15px;
   font-weight: 100;
-  content: url("../images/pin.svg");
+  content: url("./pin.svg");
   color: white;
 }
 
