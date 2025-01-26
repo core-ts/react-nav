@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { ReactComponent as PinIcon } from '../pin.svg';
 
 import '../navigation.css';
 
@@ -72,42 +73,49 @@ export const renderItem = (activePath: string, key: number, module: Privilege, p
   if (module.children && Array.isArray(module.children)) {
     const link = module.path;
     const features = module.children;
-    /*
+/*
     return (
       <li key={key} className={'open ' + activeWithPath(activePath, link, true, features)}>
         <div className='menu-item' onClick={(e) => toggleMenuItem(e)}>
-        {pinable && <button type='button' className={`btn-pin ${isPinned ? 'pinned' : ''}`} onClick={(event) => pin(event, key, module)} />}
+        {pinable && <button type='button' className={`btn-pin ${isPinned ? 'pinned' : ''}`} onClick={(event) => pin(event, key, module)}>
+            <PinIcon />
+          </button>}
           <i className={iconClass}>{className}</i>
           <span>{name}</span>
           <i className='entity-icon down' />
         </div>
         <ul className='sub-list expanded'>{renderItems(activePath, features, pin, resource, iconClass, false)}</ul>
       </li>
-    );*/
-    return (React.createElement('li', { key, className: 'open ' + activeWithPath(activePath, link, true, features) },
-    React.createElement('div', { className: 'menu-item', onClick (e: any) { return toggleMenuItem(e); } },
-      pinable && React.createElement('button', { type: 'button', className: 'btn-pin ' + (isPinned ? 'pinned' : ''), onClick (event: any) { return pin(event, key, module); } }),
-      React.createElement('i', { className: iconClass }, className),
-      React.createElement('span', null, name),
-      React.createElement('i', { className: 'entity-icon down' })),
-    React.createElement('ul', { className: 'sub-list expanded' }, renderItems(activePath, features, pin, resource, iconClass, false))));
+    );
+*/
+        return (React.createElement("li", { key: key, className: 'open ' + activeWithPath(activePath, link, true, features) },
+            React.createElement("div", { className: 'menu-item', onClick: function (e: any) { return toggleMenuItem(e); } },
+                pinable && React.createElement("button", { type: 'button', className: "btn-pin " + (isPinned ? 'pinned' : ''), onClick: function (event: any) { return pin(event, key, module); } },
+                    React.createElement(PinIcon, null)),
+                React.createElement("i", { className: iconClass }, className),
+                React.createElement("span", null, name),
+                React.createElement("i", { className: 'entity-icon down' })),
+            React.createElement("ul", { className: 'sub-list expanded' }, renderItems(activePath, features, pin, resource, iconClass, false))));
   } else {
-    const x: any = { to: module.path, className: 'menu-item' };
-    return (React.createElement('li', { key, className: activeWithPath(activePath, module.path, false) },
-    React.createElement(Link, x,
-      pinable && React.createElement('button', { type: 'button', className: 'btn-pin ' + (isPinned ? 'pinned' : ''), onClick (event: any) { return pin(event, key, module); } }),
-      React.createElement('i', { className: iconClass }, className),
-      React.createElement('span', null, name))));
+    return (React.createElement("li", { key: key, className: activeWithPath(activePath, module.path, false) },
+    React.createElement(Link, { to: module.path as any, className: 'menu-item' },
+        pinable && React.createElement("button", { type: 'button', className: "btn-pin " + (isPinned ? 'pinned' : ''), onClick: function (event: any) { return pin(event, key, module); } },
+            React.createElement(PinIcon, null)),
+        React.createElement("i", { className: iconClass }, className),
+        React.createElement("span", null, name))));
     /*
     return (
       <li key={key} className={activeWithPath(activePath, module.path, false)}>
         <Link to={module.path as any} className='menu-item'>
-          {pinable && <button type='button' className={`btn-pin ${isPinned ? 'pinned' : ''}`} onClick={(event) => pin(event, key, module)} />}
+          {pinable && <button type='button' className={`btn-pin ${isPinned ? 'pinned' : ''}`} onClick={(event) => pin(event, key, module)}>
+            <PinIcon />
+          </button>}
           <i className={iconClass}>{className}</i>
           <span>{name}</span>
         </Link>
       </li>
-    );*/
+    );
+    */
   }
 };
 export function findParent(ele: HTMLElement, node: string): HTMLElement|null {
@@ -217,7 +225,7 @@ export const toggleMenuItem = (event: React.MouseEvent<HTMLElement, MouseEvent>)
       }
     }
   }
-  if (target.nodeName === 'A') {
+  if (target && target.nodeName === 'A') {
     target = target.parentElement;
   }
   if (target && target.nodeName === 'LI') {
