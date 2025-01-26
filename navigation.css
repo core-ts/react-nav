@@ -182,22 +182,22 @@
   position: relative;
   /*display: block;*/
   display: flex;
+  height: 38px;
   padding-left: 9px;
   padding-right: 9px;
   white-space: nowrap;
   font-size: 13px;
-  font-weight: 600;
-  height: 38px;
   text-transform: uppercase;
   outline: none;
   box-sizing: border-box;
-  color: inherit;
+  color: white;
   background-color: inherit;
 }
 
 .sidebar li > .menu-item {
   padding-top: 10px;
 }
+
 /*
 .sidebar > nav > ul > li > a.menu-item {
   padding-left: 14px;
@@ -346,13 +346,15 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
 
 .menu-on .menu.sidebar .btn-pin {
   right: 20px;
-  padding-top: 2px;
+  padding-top: 6px;
 }
 
-.menu-on .menu.sidebar .menu-item .btn-pin::after {
+.menu-on .menu.sidebar .btn-pin::after {
   display: inline;
   font-size: 15px;
   font-weight: 100;
+  content: url("../images/pin.svg");
+  color: white;
 }
 
 .menu.sidebar nav ul li:hover button.btn-pin {
@@ -504,7 +506,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .top-menu .menu.sidebar > nav > ul > li > ul.sub-list > li > ul.sub-list > li > a {
-    color: inherit;
+    color: white;
   }
 
   /* End level 2 menu */
