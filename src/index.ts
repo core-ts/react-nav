@@ -210,18 +210,16 @@ export const toggleMenuItem = (event: React.MouseEvent<HTMLElement, MouseEvent>)
   const currentTarget = event.currentTarget;
   const nul = currentTarget.nextElementSibling;
   if (nul) {
-    const elI = currentTarget.querySelectorAll('.menu-item > i.entity-icon');
-    if (nul.classList.contains('expanded')) {
-      nul.classList.remove('expanded');
-      if (elI && elI.length > 0) {
-        elI[0].classList.add('up');
-        elI[0].classList.remove('down');
-      }
-    } else {
-      nul.classList.add('expanded');
-      if (elI && elI.length > 0) {
-        elI[0].classList.remove('up');
-        elI[0].classList.add('down');
+    const elI = currentTarget.querySelector(".menu-item > i.entity-icon")
+    if (elI) {
+      if (nul.classList.contains("expanded")) {
+        nul.classList.remove("expanded")
+        elI.classList.add("up")
+        elI.classList.remove("down")
+      } else {
+        nul.classList.add("expanded")
+        elI.classList.remove("up")
+        elI.classList.add("down")
       }
     }
   }
