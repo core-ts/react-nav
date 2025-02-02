@@ -183,6 +183,7 @@
   /*display: block;*/
   display: flex;
   height: 38px;
+  font-weight: 600;
   padding-left: 9px;
   padding-right: 9px;
   white-space: nowrap;
@@ -190,7 +191,7 @@
   text-transform: uppercase;
   outline: none;
   box-sizing: border-box;
-  color: white;
+  color: inherit;
   background-color: inherit;
 }
 
@@ -353,8 +354,6 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   display: inline;
   font-size: 15px;
   font-weight: 100;
-  content: url("../images/pin.svg");
-  color: white;
 }
 
 .menu.sidebar nav ul li:hover button.btn-pin {
@@ -506,7 +505,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .top-menu .menu.sidebar > nav > ul > li > ul.sub-list > li > ul.sub-list > li > a {
-    color: white;
+    color: inherit;
   }
 
   /* End level 2 menu */
