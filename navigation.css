@@ -45,8 +45,8 @@
 }
 .toggle-menu::before {
   position: absolute;
-  top: -1px;
-  left: 6px;
+  top: -2px;
+  left: 14px;
 }
 .top-banner {
   display: none;
@@ -182,12 +182,12 @@
   position: relative;
   /*display: block;*/
   display: flex;
-  height: 38px;
-  font-weight: 500;
+  height: 40px;
+  font-weight: 400;
   padding-left: 9px;
   padding-right: 9px;
   white-space: nowrap;
-  font-size: 13px;
+  font-size: 14px;
   text-transform: uppercase;
   outline: none;
   box-sizing: border-box;
@@ -210,13 +210,13 @@
 }
 
 .sidebar > nav > ul > li > a.menu-item > i {
-  text-decoration: underline;
+  text-decoration: none;
 }
-
+/*
 .menu-on .sidebar > nav > ul > li > a.menu-item > i {
   text-decoration: none;
 }
-
+*/
 .sidebar li > div.menu-i,
 .sidebar nav ul {
   white-space: normal;
@@ -347,7 +347,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
 
 .menu-on .menu.sidebar .btn-pin {
   right: 20px;
-  padding-top: 6px;
+  padding-top: 10px;
 }
 
 .menu-on .menu.sidebar .btn-pin::after {
@@ -618,6 +618,9 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
 .sidebar-parent .menu-item {
   max-width: 30px;
   overflow: hidden;
+}
+.top-menu .sidebar-parent .menu-item {
+  max-width: unset;
 }
 
 .menu-on .menu.sidebar .btn-pin:hover,
