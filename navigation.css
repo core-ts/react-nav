@@ -359,6 +359,9 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
 .menu.sidebar nav ul li:hover button.btn-pin {
   display: inline-block;
 }
+.top-menu .menu.sidebar nav ul li:hover button.btn-pin {
+  display: none;
+}
 
 .menu.sidebar .btn-pin .pinned {
   display: inline-block;
