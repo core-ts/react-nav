@@ -114,7 +114,6 @@
   left: 46px;
   margin-top: -10px;
   min-width: 200px;
-  height: 38px;
   background-color: inherit;
 }
 
@@ -195,7 +194,8 @@
 }
 
 .sidebar li > .menu-item {
-  padding-top: 10px;
+  display: flex;
+  align-items: center;
 }
 
 /*
@@ -353,8 +353,8 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   display: inline;
   font-size: 15px;
   font-weight: 100;
+  content: url("../images/pin.svg");
 }
-
 .menu.sidebar nav ul li:hover button.btn-pin {
   display: inline-block;
 }
@@ -385,7 +385,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
 
   .top-menu .menu.sidebar {
     top: 0;
-    height: 46px;
+    height: 52px;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
@@ -412,7 +412,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .top-menu .page-container {
-    height: calc(100vh - 46px);
+    height: calc(100vh - 52px);
     margin-left: 0;
   }
 
@@ -466,8 +466,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .top-menu .menu.sidebar > nav > ul > li > .menu-item {
-    height: 46px;
-    padding-top: 14px;
+    height: 52px;
   }
 
   .top-menu .menu.sidebar > nav > ul > li > ul > li {
@@ -567,9 +566,9 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .classic.top-menu .page-container {
-    margin-top: 46px;
+    margin-top: 52px;
     margin-left: 0;
-    height: calc(100vh - 46px);
+    height: calc(100vh - 52px);
   }
 
   .classic.top-menu .sidebar-parent {
