@@ -365,10 +365,6 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   display: inline-block;
   transform: rotate(45deg);
 }
-.sub-list {
-  border: 1px solid #00574b;
-  border-top: 0;
-}
 @media screen and (min-width: 769px) {
   .top-menu .entity-icon.down,
   .top-menu .entity-icon.up,
@@ -376,15 +372,9 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
     display: none;
   }
 
-  .top-menu .sidebar > nav > ul > li:hover .sub-list {
-    display: block;
-    border: 1px solid #ddd;
-    border-top: 0;
-  }
-
   .top-menu .menu.sidebar {
     top: 0;
-    height: 52px;
+    height: 46px;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
@@ -411,7 +401,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .top-menu .page-container {
-    height: calc(100vh - 52px);
+    height: calc(100vh - 46px);
     margin-left: 0;
   }
 
@@ -465,7 +455,7 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .top-menu .menu.sidebar > nav > ul > li > .menu-item {
-    height: 52px;
+    height: 46px;
   }
 
   .top-menu .menu.sidebar > nav > ul > li > ul > li {
@@ -565,9 +555,9 @@ nav.collapsed-all .sidebar-off-menu > .collapse {
   }
 
   .classic.top-menu .page-container {
-    margin-top: 52px;
+    margin-top: 46px;
     margin-left: 0;
-    height: calc(100vh - 52px);
+    height: calc(100vh - 46px);
   }
 
   .classic.top-menu .sidebar-parent {
